@@ -1,0 +1,135 @@
+/* Font Family for headers: Noticia Text.
+ * In 4 formats: regular, bold, regular italic, bold italic.
+ */
+
+@font-face {
+  font-family: 'Noticia Text';
+  src: url('NoticiaText-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noticia Text';
+  src: url('NoticiaText-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Noticia Text';
+  src: url('NoticiaText-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noticia Text';
+  src: url('NoticiaText-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Variable font: Assistant, used for everything other than headers,
+ * buttons and links.
+ * Fallback to static font files in case the
+ * browser doesn't support variable fonts.
+ */
+
+@supports (font-variation-settings: normal) {
+  @font-face {
+    font-family: 'Assistant';
+    src: url('Assistant-VariableFont_wght.ttf') format("woff2-variations"),
+         url('Assistant-VariableFont_wght.ttf') format("woff2");
+    font-weight: 200 800;
+  }
+}
+
+@supports not (font-variation-settings: normal) {
+  @font-face {
+    font-family: 'Assistant';
+    src: url('Assistant-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Assistant';
+    src: url('Assistant-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Assistant';
+    src: url('Assistant-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Assistant';
+    src: url('Assistant-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Assistant';
+    src: url('Assistant-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Assistant';
+    src: url('Assistant-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Assistant';
+    src: url('Assistant-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+  }
+}
+
+/* Variable font: FiraCode, used as monospace font. */
+
+ @supports (font-variation-settings: normal) {
+  @font-face {
+    font-family: 'FiraCode';
+    src: url('FiraCode-VariableFont_wght.ttf') format("woff2-variations"),
+         url('FiraCode-VariableFont_wght.ttf') format("woff2");
+    font-weight: 200 800;
+  }
+}
+
+@supports not (font-variation-settings: normal) {
+  @font-face {
+    font-family: 'FiraCode';
+    src: url('FiraCode-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'FiraCode';
+    src: url('FiraCode-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'FiraCode';
+    src: url('FiraCode-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'FiraCode';
+    src: url('FiraCode-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'FiraCode';
+    src: url('FiraCode-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+}
