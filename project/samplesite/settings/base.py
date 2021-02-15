@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Quick-start development settings - unsuitable for production
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'bbrpp#is=%zd_jn)jd$^v*x%tgm2jzmm%lc+i0#-kilk3cyr^w'
+SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 SITE_ID = os.environ.get('SITE_ID', 1)
 
