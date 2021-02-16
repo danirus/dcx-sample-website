@@ -40,20 +40,23 @@
 }
 
 .dropdown .select-items div, .dropdown .option-selected {
-    padding: 8px 16px;
     font-size: 0.8rem;
     border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
     cursor: pointer;
 }
 
+.dropdown .option-selected { padding: 8px 32px 8px 16px }
+.dropdown .select-items div { padding: 8px 16px; }
+
 .dropdown .select-items {
     position: absolute;
+    display: table;
     padding: 0;
     background-color: white;
     border-radius: 0.25rem;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     top: 100%;
-    left: 0;
+    /* left: 0; */
     right: 0;
     z-index: 99;
 }

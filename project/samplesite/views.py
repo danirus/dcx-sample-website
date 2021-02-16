@@ -1,5 +1,7 @@
-from django.template.response import TemplateResponse
+from django.shortcuts import render
+from django.template import RequestContext
 
 
-def home_v(request):
-    return TemplateResponse(request, 'homepage.html')
+def home(request):
+    context = RequestContext(request)
+    return render(request, "homepage.html")

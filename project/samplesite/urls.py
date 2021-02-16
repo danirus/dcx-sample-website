@@ -23,7 +23,7 @@ from samplesite import views
 
 
 urlpatterns = [
-    re_path(r'^$', views.home_v, name='homepage'),
+    re_path(r'^$', views.home, name='homepage'),
     re_path(r'^i18n/', include('django.conf.urls.i18n')),
     re_path(r'^jsi18n/$', JavaScriptCatalog.as_view(),
             name='javascript-catalog'),

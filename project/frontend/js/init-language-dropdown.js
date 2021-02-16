@@ -20,8 +20,10 @@ function setLanguage(event) {
         'Content-Type': 'application/x-www-form-urlencoded;charset-UTF-8',
       },
       body: formBody
-    }).then((d) => {
-      console.log("Then...", d);
+    }).then((data) => {
+      if (data.status == 200) {
+        window.location.href = data.url;
+      }
     });
 }
 

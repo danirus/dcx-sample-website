@@ -1,9 +1,95 @@
 {% extends "base.html" %}
 
 {% load i18n %}
+{% load static %}
 
 {% block content %}
+<aside id="hero" class="hero">
+  <div class="corset">
+    django-comments-xtd is a reusable Django app that extends django-contrib-comments with thread support, following up notifications and comments that only hits the database after users confirm them by email.
+  </div>
+</aside>
+
 <main>
-  <h1 class="text-center">{{ current_language|language_name }}</h1>
+  <div class="corset">
+    <div class="row">
+      <section class="column">
+        <h2 class="subtitle">Threaded comments</h2>
+        <p>
+          Comments can be nested up to a maximum thread level. The maximum thread level is customizable either for the whole site or on a per app.model basis.
+        </p>
+      </section>
+      <section class="column">
+        <h2 class="subtitle">Notifications and mute-links</h2>
+        <p>
+          Comment authors may opt to receive notifications of follow-up comments, and the notifications can be cancelled at any time by clicking on the mute-link that comes with the follow-up notifications.
+        </p>
+      </section>
+      <section class="column">
+        <h2 class="subtitle">Comment confirmation</h2>
+        <p>
+          Comment confirmation via email when comment authors are not authenticated. Comments hit the database only after they have been confirmed.
+        </p>
+      </section>
+    </div>
+  </div>
+  <div class="corset">
+    <div class="row">
+      <section class="column">
+        <h2 class="subtitle">Comment reactions</h2>
+        <p>
+          Enable comment reactions starting with the classic like and dislike buttons and extend them to any set of reactions that may suit your audience.
+        </p>
+      </section>
+      <section class="column">
+        <h2 class="subtitle">Template tags</h2>
+        <p>
+          Comes with template tags and filters to retrieve comments sorted and/or filtered by nested comments, reactions or publish date. And easy to extend with Django's queryset.
+        </p>
+      </section>
+      <section class="column">
+        <h2 class="subtitle">CSS and JavaScript</h2>
+        <p>
+          It does not depend on any heavy frontend framework. Comes with fully responsive CSS design, and a frontend written in vanilla JavaScript. Read the docs to extend it with your own frontend choices.
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <aside class="intro">
+    <div class="corset">
+      <div class="pic">
+        <img src="{% static 'img/hand-writing.png' %}">
+        <div class="credit">
+          by <a href="https://pxhere.com/en/photo/1527595">Suzy Hazelwood</a>
+        </div>
+      </div>
+      <h2>Two apps using django-comments-xtd</h2>
+      <h5>Within the same Django project, two apps use django-comments-xtd in different ways. The stories app and the quotes app.</h5>
+    </div>
+  </aside>
+
+  <div class="corset">
+    <div class="row">
+      <section class="column">
+        <h2 class="subtitle">Stories app</h2>
+        <p>
+          Comments for the stories app can be nested up to second level. Comment reactions are enabled and extended ala GitHub. Both, comments and reactions are sent using vanilla JavaScript.
+        </p>
+        <p>
+          Read my <a href="stories.html">stories</a>.
+        </p>
+      </section>
+      <section class="column">
+        <h2 class="subtitle">Quotes app</h2>
+        <p>
+          The quotes app is pure backend vintage app, it does not use JavaScript. But still comments can be nested, here up to first level, could be more. Reactions are disabled but can be enabled.
+        </p>
+        <p>
+          What I am <a href="quotes.html">quoting</a>.
+        </p>
+      </section>
+    </div>
+  </div>
 </main>
 {% endblock %}

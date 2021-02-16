@@ -2,6 +2,8 @@ from .base import *
 
 DEBUG = True
 
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.2.100"]
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -9,38 +11,60 @@ DATABASES = {
     }
 }
 
-# Application definition
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE
 
+INSTALLED_APPS += [
     'debug_toolbar',
-    'django_extensions',
-    'rosetta',
-    'rest_framework',
-    'django_markdown2',
-    # 'django_comments_xtd',
-    # 'django_comments',
-
-    'samplesite',
-]
-
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rosetta'
 ]
 
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.sql.SQLPanel',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+COMMENTS_APP = "django_comments_xtd"
+COMMENTS_XTD_CONFIRM_EMAIL = True   # Set to False to disable confirmation
+COMMENTS_XTD_SALT = b"es-war-einmal-una-bella-princesa-in-a-beautiful-castle"
+COMMENTS_XTD_FROM_EMAIL = 'noreply@example.com'
+COMMENTS_XTD_CONTACT_EMAIL = 'helpdesk@example.com'
+COMMENTS_XTD_THREADED_EMAILS = False # default to True, use False to allow
+                                     # other backend (say Celery based) send
+                                     # your emails.
+
+COMMENTS_XTD_REACTIONS_ENUM = "samplesite.enums.ReactionEnum"
+
+# Quotes can have 1-level depth nested comments.
+COMMENTS_XTD_MAX_THREAD_LEVEL = 1
+# COMMENTS_XTD_MAX_THREAD_LEVEL_BY_APP_MODEL = {
+#     'articles.article': 2,
+# }
+
+COMMENTS_XTD_LIST_ORDER = ('-thread_id', 'order')
+
+# COMMENTS_XTD_APP_MODEL_OPTIONS = {
+#     'articles.article': {
+#         'who_can_post': 'all',
+#         'allow_flagging': True,
+#         'allow_feedback': True,
+#         'show_feedback': True,
+#     },
+#     'quotes.quote': {
+#         'who_can_post': 'all',
+#         'allow_flagging': True,
+#         'allow_feedback': True,
+#         'show_feedback': True,
+#     }
+# }
+
+COMMENTS_XTD_API_USER_REPR = lambda u: u.get_full_name()
+
+LOGIN_URL = "/admin/login/"
+LOGIN_REDIRECT_URL = LOGIN_URL
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication'
+    ]
+}

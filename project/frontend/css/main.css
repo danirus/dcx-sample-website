@@ -202,10 +202,6 @@ a > * {
   pointer-events: none;
 }
 
-#language-dropdown {
-  width: 160px;
-}
-
 /* ------------------------------------ */
 @media screen and (min-width: 840px) {
   .hero .corset, .intro .corset {
