@@ -32,16 +32,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'avatar',
     'django_markdown2',
-    # 'django_comments_xtd',
-    # 'django_comments',
+    'django_comments_xtd',
+    'django_comments',
 
     'samplesite',
+    'users',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -102,6 +105,8 @@ LANGUAGES = (
     ('es', 'Spanish'),
 )
 
+LANGUAGE_COOKIE_NAME = "lang"
+
 TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
@@ -115,3 +120,11 @@ USE_TZ = True
 STATICFILES_DIRS = [ BASE_DIR / "frontend" ]
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'users.User'
+
+SIGNUP_URL          = "/user/signup/"
+LOGIN_URL           = "/user/login/"
+LOGOUT_URL          = "/user/logout/"
+LOGIN_REDIRECT_URL  = "/"
+LOGOUT_REDIRECT_URL = "/"

@@ -9,7 +9,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>dcx-sample-website</title>
+    <title>{% block title %}dcx-sample-website{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static 'fonts/stylesheet.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
@@ -25,8 +25,13 @@
           <h4>with django-comments-xtd</h4>
         </div>
         <nav class="menu">
-          <a href="stories.html">Stories</a>
-          <a href="quotes.html">Quotes</a>
+          {% if user.is_authenticated %}
+            <a class="{% block nav-account-class %}{% endblock %}" href="{% url 'account' %}">Account</a>
+          {% else %}
+            <a class="{% block nav-login-class %}{% endblock %}" href="{% url 'login' %}">Login</a>
+          {% endif %}
+          <a class="{% block nav-stories-class %}{% endblock %}" href="stories.html">Stories</a>
+          <a class="{% block nav-quotes-class %}{% endblock %}" href="quotes.html">Quotes</a>
           {% if 'rosetta' in settings.INSTALLED_APPS %}
           <form id="langform" hidden>
             {% csrf_token %}<input type="text" id="language" name="language" /><input type="text" name="next" />
@@ -37,7 +42,7 @@
                 {% ifnotequal current_language language.0 %}
                   <option value="{{ language.0 }}">{{ language.0|language_tuple }}</option>
                 {% else %}
-                  <option value="{{ language.0 }}" selected>{{ language.0|language_tuple }}</option>
+                  <option value="{{ language.0 }}" selected>{{ language.0|language_name }}</option>
                 {% endifnotequal %}
               {% endfor %}
             </select>
@@ -67,6 +72,8 @@
 
     <script src="{% static 'js/dropdown.js' %}"></script>
     <script src="{% static 'js/init-language-dropdown.js' %}"></script>
+    <script src="{% url 'javascript-catalog' %}"></script>
+
     {% block extra_js %}{% endblock %}
   </body>
 </html>

@@ -1,7 +1,7 @@
+bpython
 django>=3.1,<3.2
+django-avatar
 #django-comments-xtd>=3.0,<3.1
 django-debug-toolbar
 django-extensions
 django-rosetta
-ipdb
-ipython

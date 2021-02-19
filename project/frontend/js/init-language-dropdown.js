@@ -20,9 +20,20 @@ function setLanguage(event) {
         'Content-Type': 'application/x-www-form-urlencoded;charset-UTF-8',
       },
       body: formBody
-    }).then((d) => {
-      console.log("Then...", d);
+    }).then((data) => {
+      if (data.status  == 200) {
+        window.location.href = data.url;
+      }
     });
 }
 
-initDropdown("language-dropdown", setLanguage);
+/* initDropdown signature:
+ * initDropdown(elemId, onChange, shallDelegate)
+ *  -elemId: id of the element with class="dropdown" containing the <select>.
+ *  -onChange: if given, the callback function to call when an option is
+ *             selected.
+ *  -shallDelegate: boolean, if true the onChange function is called
+ *                  immediately. Otherwise it is called after the option
+ *                  has been updated in the UI.
+ */
+initDropdown("language-dropdown", setLanguage, true);
