@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'avatar',
     'django_markdown2',
     'django_comments_xtd',
     'django_comments',
@@ -121,3 +122,9 @@ STATICFILES_DIRS = [ BASE_DIR / "frontend" ]
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'users.User'
+
+SIGNUP_URL          = "/user/signup/"
+LOGIN_URL           = "/user/login/"
+LOGOUT_URL          = "/user/logout/"
+LOGIN_REDIRECT_URL  = "/"
+LOGOUT_REDIRECT_URL = "/"

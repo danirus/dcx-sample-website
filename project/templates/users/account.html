@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load avatar_tags %}
+
+{% block title %}{{ block.super }}&nbsp;&bull;&nbsp;Account{% endblock %}
+
+{% block nav-account-class %}active{% endblock %}
+
+{% block content %}
+<main>
+  <div class="corset md">
+    <div class="marquee">
+      <img src="{% avatar_url user 128 %}">
+      <div class="wo-y-margins expand fgrow px1">
+        <div>
+          {% if user.name %}
+            <h4>{{ user.name }}</h4>
+          {% else %}
+            <h4 class="muted">{% trans "Unknown name" %}</h4>
+          {% endif %}
+          <h6>{{ user.email }}</h6>
+        </div>
+        <p>
+          <a class="small" href="">Edit profile</a>
+          &nbsp;&bull;&nbsp;
+          <a class="small" href="">Change password</a>
+          &nbsp;&bull;&nbsp;
+          <a class="small" href="">Delete account</a>
+        </p>
+      </div>
+      <div>
+        <a class="btn primary" href="{% url 'logout' %}">Logout</a>
+      </div>
+    </div>
+  </div>
+  <div class="corset md">
+    <div class="row">
+      <div class="column">
+        <h3>{% trans "Contributions" %}</h3>
+        <p>You have contributed to the talk with the following comments:</p>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}

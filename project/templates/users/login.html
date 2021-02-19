@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}{{ block.super }}&nbsp;&bull;&nbsp;Login{% endblock %}
+
+{% block nav-login-class %}active{% endblock %}
+
+{% block content %}
+<main>
+  <div class="corset md">
+    <div class="row">
+      <div class="column">
+        <h2>Log in</h2>
+        <p>
+          This website places two cookies in your browser. One called
+          <code>csrftoken</code> to send form data to the web server with
+          security and another called <code>sessionid</code> to keep you logged in.
+          It does not use third party tracking systems.
+        </p>
+        <h3>{% trans "Login with your email and password" %}</h3>
+        <div class="grid-form">
+          <form method="POST">
+            {% csrf_token %}
+            <label class="col1" for="email">Email</label>
+            <div class="col2">{{ form.email }}</div>
+            <label class="col1" for="pwd">Password</label>
+            <div class="col2">{{ form.password }}</div>
+            <div class="col2">
+              {{ form.remember }}
+              {{ form.remember.label }}
+            </div>
+            <div class="col2">
+              <div class="inline-left">
+                <button class="primary" type="submit" name="submit">{% trans 'Log in' %}</button>
+              </div>
+            </div>
+            <div class="col2">
+              <a class="small" href="/pascual">{% trans "Lost or forgot your password?" %}</a><br/>
+              <a class="small" href="/try">{% trans "Have no account? Give it try." %}</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}

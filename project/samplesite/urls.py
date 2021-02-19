@@ -27,6 +27,8 @@ urlpatterns = [
     re_path(r'^i18n/', include('django.conf.urls.i18n')),
     re_path(r'^jsi18n/$', JavaScriptCatalog.as_view(),
             name='javascript-catalog'),
+    re_path(r'^avatar/', include('avatar.urls')),
+    re_path(r'^user/', include('users.urls')),
     re_path(r'admin/', admin.site.urls),
 
 ]

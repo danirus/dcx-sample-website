@@ -3,19 +3,15 @@
  * https://www.w3schools.com/howto/howto_custom_select.asp.
  */
 
-function initDropdown(elemId, onChange) {
-  // const dropdowns = document.getElementsByClassName("dropdown");
+function initDropdown(elemId, onChange, shallDelegate) {
   const dropdown = document.getElementById(elemId);
   if (dropdown) {
-  // for (let i = 0; i < dropdowns.length; i++) {
-    // const select = dropdowns[i].getElementsByTagName("select")[0];
     const select = dropdown.getElementsByTagName("select")[0];
 
     // For each element, create a new div that will act as the selected item.
     const opt_sel = document.createElement("div");
     opt_sel.setAttribute("class", "option-selected");
     opt_sel.innerHTML = select.options[select.selectedIndex].innerHTML;
-    // dropdowns[i].appendChild(opt_sel);
     dropdown.appendChild(opt_sel);
 
     // For each element, create a new DIV that will contain the option list.
@@ -28,11 +24,10 @@ function initDropdown(elemId, onChange) {
       const opt_div = document.createElement("div");
       opt_div.innerHTML = select.options[j].innerHTML;
       opt_div.setAttribute("data-value", select.options[j].value);
-      // opt_div.addEventListener("click", selectItem);
-      opt_div.addEventListener("click", selectItemClosure(onChange));
+      opt_div.addEventListener(
+        "click", selectItemClosure(onChange, shallDelegate));
       items.appendChild(opt_div);
     }
-    // dropdowns[i].appendChild(items);
     dropdown.appendChild(items);
     opt_sel.addEventListener("click", function(e) {
       // When the select box is clicked, close any other
@@ -54,26 +49,35 @@ function initDropdown(elemId, onChange) {
   document.addEventListener("click", closeAllSelect);
 }
 
-function selectItemClosure(onChange) {
+function selectItemClosure(onChange, shallDelegate) {
   function selectItem(ev) {
     // When an item is clicked, update the original
     // select box and the selected item.
+    let shallCallOnChange = false;
     const select = this.parentNode.parentNode.getElementsByTagName("select")[0];
     const opt_sel = this.parentNode.previousSibling;
     for (let idx = 0; idx < select.length; idx++) {
       if (select.options[idx].innerHTML == this.innerHTML) {
-        select.selectedIndex = idx;
-        opt_sel.innerHTML = this.innerHTML;
-        const items = this.parentNode.getElementsByClassName("same-as-selected");
-        for (let jdx = 0; jdx < items.length; jdx++) {
-          items[jdx].removeAttribute("class");
+        shallCallOnChange = true;
+        if (onChange && shallDelegate) {
+          return onChange(ev);
+        } else {
+          select.selectedIndex = idx;
+          opt_sel.innerHTML = this.innerHTML;
+          const items = this.parentNode
+            .getElementsByClassName("same-as-selected");
+          for (let jdx = 0; jdx < items.length; jdx++) {
+            items[jdx].removeAttribute("class");
+          }
+          this.setAttribute("class", "same-as-selected");
+          break;
         }
-        this.setAttribute("class", "same-as-selected");
-        break;
       }
     }
     opt_sel.click();
-    onChange(ev);
+    if (shallCallOnChange) {
+      onChange(ev);
+    }
   }
   return selectItem;
 }
@@ -98,8 +102,3 @@ function closeAllSelect(element) {
     }
   }
 }
-
-
-// window.addEventListener("load", (_) => init());
-
-// export default initDropdown;

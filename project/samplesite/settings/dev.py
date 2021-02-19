@@ -14,6 +14,7 @@ DATABASES = {
 MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE
 
 INSTALLED_APPS += [
+    'django_extensions',
     'debug_toolbar',
     'rosetta'
 ]
@@ -60,8 +61,12 @@ COMMENTS_XTD_LIST_ORDER = ('-thread_id', 'order')
 
 COMMENTS_XTD_API_USER_REPR = lambda u: u.get_full_name()
 
-LOGIN_URL = "/admin/login/"
-LOGIN_REDIRECT_URL = LOGIN_URL
+SIGNUP_URL          = "/user/signup/"
+LOGIN_URL           = "/user/login/"
+LOGOUT_URL          = "/user/logout/"
+LOGIN_REDIRECT_URL  = "/"
+LOGOUT_REDIRECT_URL = "/"
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
