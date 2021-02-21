@@ -14,7 +14,7 @@ class UserAdmin(AuthUserAdmin):
     fieldsets = (
         (None, {
             "fields": (
-                ("name", "email", "password", "is_active", "url")
+                ("name", "email", "password", "is_active", "url", "language")
             )
         }),
         ("Date Information", {

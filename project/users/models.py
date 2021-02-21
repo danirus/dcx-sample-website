@@ -1,10 +1,13 @@
 from datetime import datetime, timedelta
 
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
 from django.core.mail import send_mail
 from django.utils.translation import ugettext_lazy as _
+
+from pytz import timezone
 
 
 class UserManager(BaseUserManager):
@@ -38,6 +41,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, null=True)
     name = models.CharField(_('name'), max_length=150, blank=True)
     url = models.URLField("url", blank=True)
+    language = models.CharField(max_length=5, default="en", blank=False)
     is_staff = models.BooleanField(
         _('staff status'), default=False,
         help_text=_('Designates whether the user can log into this site.'))
@@ -91,9 +95,10 @@ class Confirmation(models.Model):
                      "notifications).")
 
     def is_out_of_date(self):
-        two_days = timedelta(days=2)
-        diff = datetime.now() - self.creation_date
-        if diff > two_days:
+        one_day = timedelta(days=1)
+        now = datetime.now(tz=timezone(settings.TIME_ZONE))
+        diff =  now - self.creation_date
+        if diff > one_day:
             return True
         else:
             return False

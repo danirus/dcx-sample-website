@@ -197,6 +197,11 @@ a {
   text-decoration: none;
 }
 
+a.underline:hover {
+  color: rgb(4 92 162);
+  text-decoration: underline;
+}
+
 a > * {
   /* Nothing within the anchor elements should have pointer events,
    * so that when clicking in a SVG button, the click doesn't land
@@ -490,8 +495,9 @@ button.secondary:not(:disabled):not(.disabled).active:focus {
   flex-direction: column;
 }
 
+.grid-form.ymargin { margin-top: 16px; margin-bottom: 16px }
+.grid-form.xmargin { margin-left: 16px; margin-right: 16px }
 .grid-form.bordered {
-  margin: 16px;
   border: 8px solid rgba(0, 0, 0, .1);
   border-radius: 0.5rem;
 }
@@ -560,6 +566,13 @@ input[type=password] {
 }
 
 /* ------- helpers --------- */
+
+.text-success { color: green }
+.text-info { color: #0088ff }
+.text-warn { color: orange }
+.text-error { color: red }
+
+.fw500 { font-weight: 500 }
 
 .small { font-size: 0.8rem }
 .muted { color: rgb(162, 162, 162); }
