@@ -5,7 +5,7 @@ from django.utils.translation import ugettext as _
 from .models import Confirmation, User
 
 
-confirm_pending_msg = _("Your registration process is not finished yet, you have to confirm your e-Mail address. Check the e-Mail message we already sent you.")
+confirm_pending_msg = _("Your registration process is not finished yet, you  have to confirm your e-Mail address. Check the e-Mail message we already sent you.")
 usr_not_active_msg = _("This user account is not active.")
 usr_not_auth_msg = _("Enter a correct e-Mail address and password. Note that both fields are case-sensitive.")
 
@@ -45,8 +45,8 @@ class LoginForm(forms.Form):
         return self.cleaned_data
 
 
-email_already_registered = _("This e-Mail address is already registered")
-too_many_attempts = _("Wait 24 hours to request another email address change")
+email_already_registered = _("This e-Mail address is already registered.")
+too_many_attempts = _("Please, wait 24 hours to request another email address change.")
 
 
 class ChangeEmailForm(forms.Form):
