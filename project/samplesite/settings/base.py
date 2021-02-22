@@ -117,6 +117,11 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+
 STATICFILES_DIRS = [ BASE_DIR / "frontend" ]
 
 STATIC_URL = '/static/'
@@ -128,3 +133,6 @@ LOGIN_URL           = "/user/login/"
 LOGOUT_URL          = "/user/logout/"
 LOGIN_REDIRECT_URL  = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+COMMENTS_XTD_SALT = "w17dnq6czc2m+=l)=yiydar-r$$pms#e7#88pjz_&0n%sq^kkr"
+COMMENTS_XTD_SEND_HTML_EMAIL = True

@@ -38,10 +38,34 @@
   <div class="corset md">
     <div class="row">
       <div class="column">
-        <h3>{% trans "Contributions" %}</h3>
-        <p>You have contributed to the talk with the following comments:</p>
+        <h3>{% trans "Edit Profile" %}</h3>
       </div>
+    </div>
+  </div>
+  <div class="corset md">
+    <div class="grid-form xmargin bordered fgrow">
+      <form id="emailform" method="POST" onSubmit="return change_email_form.post()">
+        {% csrf_token %}
+        <label class="col1" for="email">Email address</label>
+        <div class="col2">{{ email_form.email }}</div>
+        {% if email_form_msg %}
+        <div id="emailhelp" class="col2 helper-text text-info">
+          {{ email_form_msg }}
+        </div>
+        {% else %}
+        <div id="emailhelp" class="col2 helper-text hide"></div>
+        {% endif %}
+        <div class="col2">
+          <div class="inline-left">
+            <button class="small primary" type="submit" name="submit">{% trans 'change' %}</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </main>
 {% endblock content %}
+
+{% block extra_js %}
+{{ email_form.media }}
+{% endblock %}
