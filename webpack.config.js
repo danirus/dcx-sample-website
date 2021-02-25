@@ -21,7 +21,7 @@ module.exports = {
   output: {
     path: path.resolve(PRJ_PATH, "frontend", "dist"),
     filename: "[name]-[fullhash].js",
-    publicPath: 'http://0.0.0.0:9000/static/dist/'
+    publicPath: 'http://0.0.0.0:3000/'
   },
   module: {
     rules: [
@@ -44,5 +44,9 @@ module.exports = {
       path: path.resolve(PRJ_PATH, "frontend", "dist"),
       filename: 'webpack-stats.json'
     }),
-  ]
+  ],
+  devServer: {
+    contentBase: path.join(PRJ_PATH, "frontend", "dist"),
+    port: 3000
+  }
 }
