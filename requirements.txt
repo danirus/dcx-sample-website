@@ -5,3 +5,4 @@ django-avatar
 django-debug-toolbar
 django-extensions
 django-rosetta
+django-webpack-loader

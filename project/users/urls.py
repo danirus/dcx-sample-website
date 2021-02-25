@@ -11,4 +11,5 @@ urlpatterns = [
     path('account/edit/email', views.post_change_email_form_j),
     re_path(r'^account/change-email/(?P<key>[^/]+)/confirm$',
             views.confirm_change_email, name='change-email-confirm'),
+    path('account/edit/pdata', views.post_personal_data_form_j),
 ]

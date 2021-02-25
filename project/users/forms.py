@@ -1,7 +1,9 @@
 from django import forms
+from django.conf import settings
 from django.contrib.auth import authenticate
 from django.utils.translation import ugettext as _
 
+from samplesite.iso_639_1 import dLANG_CHOICES
 from .models import Confirmation, User
 
 
@@ -49,11 +51,11 @@ email_already_registered = _("This e-Mail address is already registered.")
 too_many_attempts = _("Please, wait 24 hours to request another email address change.")
 
 
-class ChangeEmailForm(forms.Form):
+class EmailForm(forms.Form):
     email = forms.CharField(required=True)
 
     class Media:
-        js = ("js/change_email_form.js",)
+        js = ("js/email_form.js",)
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user", None)
@@ -91,3 +93,29 @@ class ChangeEmailForm(forms.Form):
             Confirmation.objects.create(email=self.user.email, key=email,
                                         purpose="E")  # Change email.
             return email
+
+
+#--------------------------------------------------
+langcodes = [ x[0] for x in settings.LANGUAGES ]
+langnames = map(lambda x: dLANG_CHOICES[x[0]], settings.LANGUAGES)
+LANG_CHOICES = zip(langcodes, langnames)
+
+
+class PersonalDataForm(forms.Form):
+    name = forms.CharField(max_length=150, required=False, label=_("Name"))
+    url = forms.URLField(required=False, label=_("Personal URL"))
+    language = forms.ChoiceField(choices=LANG_CHOICES, initial="",
+                                 label=_("Language"))
+
+    class Media:
+        js = ("js/pdata_form.js",)
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop("user", None)
+        if self.user:
+            kwargs['initial'] = {
+                'name': self.user.name,
+                'url': self.user.url,
+                'language': self.user.language
+            }
+        super().__init__(*args, **kwargs)
