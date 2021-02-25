@@ -353,7 +353,7 @@ footer p a { color: white }
   justify-content: space-between;
   align-items: stretch;
   flex-grow: 1;
-  background-color: rgb(85, 153, 193, .1);
+  background-color: aliceblue;
   padding: 16px;
 }
 
@@ -367,6 +367,17 @@ footer p a { color: white }
 .expand {
   justify-content: space-between;
 }
+
+.alert {
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.alert-info {  background-color:aliceblue }
+.alert-success { background-color: #dbffe4 }
+.alert-warn { background-color: #fff6e6 }
+.alert-error { background-color: #ffdede }
 
 /* ------- buttons --------- */
 
@@ -495,8 +506,9 @@ button.secondary:not(:disabled):not(.disabled).active:focus {
   flex-direction: column;
 }
 
-.grid-form.ymargin { margin-top: 16px; margin-bottom: 16px }
+.grid-form.ymargin { margin-top: 32px; margin-bottom: 16px }
 .grid-form.xmargin { margin-left: 16px; margin-right: 16px }
+
 .grid-form.bordered {
   border: 8px solid rgba(0, 0, 0, .1);
   border-radius: 0.5rem;
@@ -530,7 +542,7 @@ label {
   font-size: 0.9rem;
 }
 
-input, textarea {
+input, select, textarea {
   font-family: "Assistant", sans-serif;
   font-size: 0.9rem;
   border: 1px solid rgba(0, 0, 0, .2);
@@ -543,7 +555,7 @@ textarea {
   padding: 8px 12px;
 }
 
-input:focus, textarea:focus {
+input:focus, select:focus, textarea:focus {
   outline: 0;
   color: #555;
   background-color: white;
@@ -551,6 +563,8 @@ input:focus, textarea:focus {
   box-shadow: 0 0 0 .2rem rgba(33,150,243,0.25);
 }
 
+select,
+input[type=url],
 input[type=text],
 input[type=email],
 input[type=password] {
@@ -580,6 +594,7 @@ input[type=password] {
 .text-center { text-align: center; }
 .text-right { text-align: right; }
 
+.mt32 { margin-top: 32px }}
 .pb24 { padding-bottom: 24px }
 .py06 { padding: .6rem 0; }
 .px1 { padding: 0 1rem; }

@@ -12,7 +12,7 @@ from django.views.defaults import bad_request
 from django_comments_xtd import signed
 
 from . import forget_me, remember_me
-from .forms import ChangeEmailForm, LoginForm
+from .forms import EmailForm, LoginForm, PersonalDataForm
 from .models import Confirmation
 from .utils import notify_emailaddr_change_confirmation
 
@@ -48,22 +48,26 @@ def user_account(request):
 
 
 @login_required
-def edit_user(request, email_form_msg="", user_form_msg="", avatar_form_msg=""):
-    email_form = ChangeEmailForm(user=request.user)
+def edit_user(request,
+              email_form_msg="",
+              pdata_form_msg="",
+              avatar_form_msg=""):
+    email_form = EmailForm(user=request.user)
+    pdata_form = PersonalDataForm(user=request.user)
     return render(request, 'users/edit_account.html', {
         'email_form': email_form,
         'email_form_msg': email_form_msg,
-        # 'user_form': user_form,
-        user_form_msg: user_form_msg,
+        'pdata_form': pdata_form,
+        'pdata_form_msg': pdata_form_msg,
         # 'avatar_form': avatar_form,
-        avatar_form_msg: avatar_form_msg
+        'avatar_form_msg': avatar_form_msg
     })
 
 
 @login_required
 @require_POST
 def post_change_email_form_j(request):
-    form = ChangeEmailForm(request.POST, user=request.user)
+    form = EmailForm(request.POST, user=request.user)
     if not form.is_valid():
         return JsonResponse({'status': 'error', 'errors': form.errors})
 
@@ -97,3 +101,18 @@ def confirm_change_email(request, key):
 
     return edit_user(request,
                      email_form_msg=_("Your email address has been changed."))
+
+
+@login_required
+@require_POST
+def post_personal_data_form_j(request):
+    form = PersonalDataForm(request.POST, user=request.user)
+    if not form.is_valid():
+        return JsonResponse({'status': 'error',
+                             'errors': form.non_field_errors})
+
+    request.user.name = form.cleaned_data['name']
+    request.user.url = form.cleaned_data['url']
+    request.user.language = form.cleaned_data['language']
+    request.user.save()
+    return JsonResponse({'status': 'success'})
