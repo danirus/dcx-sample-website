@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load static %}
 {% load samplesite_filters %}
+{% load manifest %}
 
 {% get_available_languages as LANGUAGES %}
 {% get_current_language as current_language %}
@@ -12,8 +13,7 @@
     <title>{% block title %}dcx-sample-website{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static 'fonts/stylesheet.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/dropdown.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% manifest 'styles.css' %}">
 
     {% block extra_css %}{% endblock %}
   </head>
@@ -70,9 +70,8 @@
       </div>
     </footer>
 
-    <script src="{% static 'js/dropdown.js' %}"></script>
-    <script src="{% static 'js/init_language_dropdown.js' %}"></script>
     <script src="{% url 'javascript-catalog' %}"></script>
+    <script src="{% manifest 'global.js' %}"></script>
 
     {% block extra_js %}{% endblock %}
   </body>

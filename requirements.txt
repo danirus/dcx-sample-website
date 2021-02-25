@@ -4,5 +4,5 @@ django-avatar
 #django-comments-xtd>=3.0,<3.1
 django-debug-toolbar
 django-extensions
+django-manifest-loader
 django-rosetta
-django-webpack-loader

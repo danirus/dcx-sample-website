@@ -11,13 +11,13 @@ decorator==4.4.2
 Django==3.1.6
 django-appconf==1.0.4
 django-avatar==5.0.0
-# -e git+git@github.com:danirus/django-comments-xtd.git@91871572fb8cf473d5cd037d3b5f3da255864851#egg=django_comments_xtd
+-e git+git@github.com:danirus/django-comments-xtd.git@91871572fb8cf473d5cd037d3b5f3da255864851#egg=django_comments_xtd
 django-contrib-comments==1.9.2
 django-debug-toolbar==3.2
 django-extensions==3.1.1
+django-manifest-loader==1.0.0
 django-markdown2==0.3.1
 django-rosetta==0.9.5
-django-webpack-loader==0.7.0
 djangorestframework==3.12.2
 docutils==0.14
 greenlet==1.0.0
