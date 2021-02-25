@@ -3,7 +3,7 @@
  * https://www.w3schools.com/howto/howto_custom_select.asp.
  */
 
-function initDropdown(elemId, onChange, shallDelegate) {
+window.initDropdown = (elemId, onChange, shallDelegate) => {
   const dropdown = document.getElementById(elemId);
   if (dropdown) {
     const select = dropdown.getElementsByTagName("select")[0];

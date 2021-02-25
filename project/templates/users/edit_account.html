@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load static %}
 {% load avatar_tags %}
-{% load render_bundle from webpack_loader %}
+{% load manifest %}
 
 {% block title %}{{ block.super }}&nbsp;&bull;&nbsp;Account{% endblock %}
 
@@ -93,5 +93,5 @@
 {% endblock content %}
 
 {% block extra_js %}
-{% render_bundle 'users' 'js' 'default' %}
+<script src="{% manifest 'users.js' %}"></script>
 {% endblock %}

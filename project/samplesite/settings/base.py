@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'webpack_loader',
+    'manifest_loader',
     'rest_framework',
     'avatar',
     'django_markdown2',
@@ -125,21 +125,11 @@ STATICFILES_FINDERS = [
 ]
 
 STATICFILES_DIRS = [
-    BASE_DIR / "frontend",
+    BASE_DIR / "dist",
+    BASE_DIR / "media"
 ]
 
 STATIC_URL = '/static/'
-
-WEBPACK_LOADER = {
-    'default': {
-        'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': 'js/',
-        'STATS_FILE': BASE_DIR / "frontend" / "dist" / "webpack-stats.json",
-        'POLL_INTERVAL': 0.1,
-        'TIMEOUT': None,
-        'IGNORE': ['.+\.hot-update.js', '.+\.map']
-    }
-}
 
 AUTH_USER_MODEL = 'users.User'
 
