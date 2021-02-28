@@ -126,10 +126,14 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = [
     BASE_DIR / "dist",
-    BASE_DIR / "media"
+    BASE_DIR / "static"
 ]
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+
+MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -139,5 +143,5 @@ LOGOUT_URL          = "/user/logout/"
 LOGIN_REDIRECT_URL  = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-COMMENTS_XTD_SALT = "w17dnq6czc2m+=l)=yiydar-r$$pms#e7#88pjz_&0n%sq^kkr"
+COMMENTS_XTD_SALT = os.environ.get('COMMENTS_XTD_SALT', 1)
 COMMENTS_XTD_SEND_HTML_EMAIL = True

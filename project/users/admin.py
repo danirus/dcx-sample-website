@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib.auth.forms import (
-    AdminPasswordChangeForm, UserChangeForm, UserCreationForm
-)
+    AdminPasswordChangeForm, UserChangeForm, UserCreationForm)
 
 from users.models import User, Confirmation
 

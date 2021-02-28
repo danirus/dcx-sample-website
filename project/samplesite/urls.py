@@ -35,10 +35,12 @@ urlpatterns = [
 
 
 if settings.DEBUG:
+    from django.conf.urls.static import static
     import debug_toolbar
     urlpatterns += [
         path('__debug__/', include(debug_toolbar.urls)),
-    ] + staticfiles_urlpatterns()
+    ] + staticfiles_urlpatterns() + \
+        static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 if 'rosetta' in settings.INSTALLED_APPS:
