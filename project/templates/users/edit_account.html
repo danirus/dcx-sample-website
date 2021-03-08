@@ -11,7 +11,7 @@
 
 {% block content %}
 <main>
-  <div class="corset md">
+  <div class="container md">
     <div class="marquee">
       <img src="{% avatar_url user 128 %}">
       <div class="wo-y-margins expand fgrow px1">
@@ -36,14 +36,14 @@
       </div>
     </div>
   </div>
-  <div class="corset md">
+  <div class="container md">
     <div class="row">
       <div class="column">
         <h3>{% trans "Edit Profile" %}</h3>
       </div>
     </div>
   </div>
-  <div class="corset md">
+  <div class="container md">
     <div class="grid-form xmargin bordered fgrow">
       <form id="email_form" method="POST" onSubmit="return submit_email_form()">
         {% if email_form_msg %}
@@ -64,7 +64,7 @@
       </form>
     </div>
   </div>
-  <div class="corset md">
+  <div class="container md">
     <div class="grid-form xmargin ymargin bordered fgrow">
       <form id="pdata_form" method="POST" onSubmit="return submit_pdata_form()">
         {% if pdata_form_msg %}

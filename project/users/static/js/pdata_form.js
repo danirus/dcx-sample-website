@@ -66,5 +66,4 @@ export default class PersonalDataForm extends BaseForm {
     });
     return false;  // To prevent calling the action attribute.
   }
-
 }

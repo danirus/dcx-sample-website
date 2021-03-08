@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'samplesite',
     'users',
+    'stories',
 ]
 
 MIDDLEWARE = [
