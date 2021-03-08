@@ -39,24 +39,28 @@ body {
 }
 
 /* ----------------------------------------- */
-.corset {
+.container {
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
+header .container,
+footer .container { flex-direction: row }
+
 @media screen and (min-width: 1172px) {
-  .corset {
+  .container {
     width: 1140px;
   }
-  .corset.md {
+  .container.md {
     width: 820px;
   }
 }
 
 @media screen and (min-width: 840px) and (max-width: 1171px) {
-  .corset {
+  .container {
     width: 100%;
     padding-left: 16px;
     padding-right: 16px;
@@ -64,8 +68,13 @@ body {
 }
 
 @media screen and (max-width: 839px) {
-  .corset {
+  .container {
     width: 100%;
+    flex-direction: column;
+  }
+
+  header .container,
+  footer .container {
     flex-direction: column;
   }
 }
@@ -73,10 +82,6 @@ body {
 
 li + li {
     margin-top: 0.3em;
-}
-
-header {
-  /* background-image: url(../img/blueprint.png), linear-gradient(to bottom, rgb(0, 40, 72), #0a6ebd); */
 }
 
 header .title {
@@ -92,7 +97,7 @@ header .title h1 {
 
 header .title h4 {
   margin-top: 0;
-  color: #3aa3ff;
+  color: #44b78b;
   font-weight: 400;
 }
 
@@ -121,7 +126,7 @@ header .title h4 {
 header .title h1 a {
   display: block;
   text-decoration: none;
-  color: #de6868;
+  color: #3aa3ff;
 }
 
 /* ------------------------------------- */
@@ -214,27 +219,15 @@ a > * {
 
 /* ------------------------------------ */
 @media screen and (min-width: 840px) {
-  .hero .corset, .intro .corset {
+  .container .intro {
     width: 840px;
-    padding: 2em 3em;
-    background-color: rgb(85, 153, 193, .1);
+    padding: 2em;
   }
 }
 
-.hero {
-  width: 100%;
-  /* padding: 2em 1em; */
-  text-align: center;
-  color: black;
-  /* background-color: rgb(85, 153, 193, .1); */
-  font-size: 1.1em;
-}
-
-/* -------------- */
 .intro {
   width: 100%;
   padding: 2em 1em;
-  border-top: 1px solid rgba(0, 0, 0, .1);
   text-align: center;
   color: black;
   font-size: 1.1em;
@@ -248,7 +241,7 @@ a > * {
 
 /* -------------- */
 
-.intro .corset {
+.intro .container {
   flex-direction: column;
 }
 /* ------------------------------------ */
@@ -585,6 +578,8 @@ input[type=password] {
 
 /* ------- helpers --------- */
 
+.fgrow { flex-grow: 1 }
+
 .text-success { color: green }
 .text-info { color: #0088ff }
 .text-warn { color: orange }
@@ -592,7 +587,8 @@ input[type=password] {
 
 .fw500 { font-weight: 500 }
 
-.small { font-size: 0.8rem }
+.big { font-size: 1.2rem }
+.small { font-size: 0.75rem }
 .muted { color: rgb(162, 162, 162); }
 
 .text-center { text-align: center; }
@@ -600,11 +596,11 @@ input[type=password] {
 
 .mt32 { margin-top: 32px }
 .pb24 { padding-bottom: 24px }
+.pb32 { padding-bottom: 32px }
 .py06 { padding: .6rem 0; }
 .px1 { padding: 0 1rem; }
+.bt1 { border-top: 1px solid rgba(0, 0, 0, .1); }
+.bgc-alice { background-color: aliceblue; }
 
-.hide {
-    display: none;
-}
+.hide { display: none; }
 
-.fgrow { flex-grow: 1 }

@@ -19,7 +19,7 @@
   </head>
   <body>
     <header>
-      <div class="corset">
+      <div class="container">
         <div class="title">
           <h1><a href="{% url 'homepage' %}">A sample website</a></h1>
           <h4>with django-comments-xtd</h4>
@@ -30,7 +30,7 @@
           {% else %}
             <a class="{% block nav-login-class %}{% endblock %}" href="{% url 'login' %}">Login</a>
           {% endif %}
-          <a class="{% block nav-stories-class %}{% endblock %}" href="stories.html">Stories</a>
+          <a class="{% block nav-stories-class %}{% endblock %}" href="{% url 'stories' %}">Stories</a>
           <a class="{% block nav-quotes-class %}{% endblock %}" href="quotes.html">Quotes</a>
           {% if 'rosetta' in settings.INSTALLED_APPS %}
           <form id="langform" hidden>
@@ -56,8 +56,7 @@
     {% endblock %}
 
     <footer>
-      <div class="corset">
-        <p>django-comments-xtd</p>
+      <div class="container">
         <p>
           <a href="http://readthedocs.org/docs/django-comments-xtd/">documentation</a>
           &nbsp;&bull;&nbsp;
@@ -67,6 +66,7 @@
           &nbsp;&bull;&nbsp;
           <a href="https://github.com/danirus/django-comments-xtd/discussions">discussions</a>
         </p>
+        <p>django-comments-xtd</p>
       </div>
     </footer>
 

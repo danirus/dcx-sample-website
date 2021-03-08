@@ -29,8 +29,9 @@ urlpatterns = [
             name='javascript-catalog'),
     re_path(r'^avatar/', include('avatar.urls')),
     re_path(r'^user/', include('users.urls')),
-    re_path(r'admin/', admin.site.urls),
-
+    re_path(r'^stories/', include('stories.urls')),
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^comments/', include('django_comments_xtd.urls')),
 ]
 
 

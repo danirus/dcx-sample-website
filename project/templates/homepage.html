@@ -4,14 +4,13 @@
 {% load static %}
 
 {% block content %}
-<aside id="hero" class="hero">
-  <div class="corset">
-    django-comments-xtd is a reusable Django app that extends django-contrib-comments with thread support, following up notifications and comments that only hits the database after users confirm them by email.
-  </div>
-</aside>
-
 <main>
-  <div class="corset">
+  <div class="container">
+    <div class="intro big bgc-alice">
+      django-comments-xtd is a reusable Django app that extends django-contrib-comments with thread support, following-up notifications and comments that only hit the database after users confirm them by email.
+    </div>
+  </div>
+  <div class="container">
     <div class="row">
       <section class="column">
         <h2 class="subtitle">Threaded comments</h2>
@@ -33,7 +32,7 @@
       </section>
     </div>
   </div>
-  <div class="corset">
+  <div class="container">
     <div class="row">
       <section class="column">
         <h2 class="subtitle">Comment reactions</h2>
@@ -56,8 +55,9 @@
     </div>
   </div>
 
-  <aside class="intro">
-    <div class="corset">
+
+  <div class="container">
+    <div class="intro mt32 bt1">
       <div class="pic">
         <img src="{% static 'img/hand-writing.png' %}">
         <div class="credit">
@@ -67,9 +67,9 @@
       <h2>Two apps using django-comments-xtd</h2>
       <h5>Within the same Django project, two apps use django-comments-xtd in different ways. The stories app and the quotes app.</h5>
     </div>
-  </aside>
+  </div>
 
-  <div class="corset">
+  <div class="container">
     <div class="row">
       <section class="column">
         <h2 class="subtitle">Stories app</h2>
