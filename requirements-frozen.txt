@@ -5,7 +5,7 @@ certifi==2020.12.5
 chardet==4.0.0
 curtsies==0.3.5
 cwcwidth==0.1.4
-Django==3.1.7
+Django==3.1.8
 django-appconf==1.0.4
 django-avatar==5.0.0
 django-contrib-comments==2.0.0
