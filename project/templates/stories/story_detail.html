@@ -61,16 +61,16 @@
 {% block extra_js %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.0.4/markdown-it.min.js"></script>
 <script>
-function submit_comment_form() {
-  console.log("Submit the comment");
-  return false;
-}
-window.addEventListener("DOMContentLoaded", function() {
-  const comment_form = document.querySelector("textarea[name=comment]").form;
-  comment_form.addEventListener("submit", function(event) {
-    event.preventDefault();
-    return submit_comment_form();
-  });
-});
+// function submit_comment_form() {
+//  console.log("Submit the comment");
+//  return false;
+//}
+//window.addEventListener("DOMContentLoaded", function() {
+//  const comment_form = document.querySelector("textarea[name=comment]").form;
+//  comment_form.addEventListener("submit", function(event) {
+//    event.preventDefault();
+//    return submit_comment_form();
+//  });
+//});
 </script>
 {% endblock %}

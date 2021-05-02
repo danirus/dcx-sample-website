@@ -41,14 +41,6 @@ COMMENTS_XTD_MAX_THREAD_LEVEL_BY_APP_MODEL = {
     'stories.story': 2,
 }
 
-COMMENTS_XTD_APP_MODEL_OPTIONS = {
-    'default': {
-        'who_can_post': 'all',
-        'allow_flagging': True,
-        'allow_reactions': True,
-    }
-}
-
 COMMENTS_XTD_API_USER_REPR = lambda u: u.get_full_name()
 
 SIGNUP_URL          = "/user/signup/"
