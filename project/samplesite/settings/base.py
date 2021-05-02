@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -144,5 +145,14 @@ LOGOUT_URL          = "/user/logout/"
 LOGIN_REDIRECT_URL  = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-COMMENTS_XTD_SALT = os.environ.get('COMMENTS_XTD_SALT', 1)
+COMMENTS_XTD_SALT = os.environ.get('COMMENTS_XTD_SALT', 1).encode('utf-8')
 COMMENTS_XTD_SEND_HTML_EMAIL = True
+
+COMMENTS_XTD_APP_MODEL_OPTIONS = {
+    'default': {
+        'who_can_post': 'all',  # Valid values: "users", "all"
+        'allow_comment_flagging': True,
+        'allow_comment_reactions': True,
+        'allow_object_reactions': True
+    }
+}

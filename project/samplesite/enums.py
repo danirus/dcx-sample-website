@@ -4,8 +4,8 @@ from django_comments_xtd.models import BaseReactionEnum
 
 
 class ReactionEnum(BaseReactionEnum):
-    LIKE_IT =    "+", "+1"
-    DISLIKE_IT = "-", "-1"
+    LIKE_IT =    "+", _("Like")
+    DISLIKE_IT = "-", _("Dislike")
     SMILE =      "S", _("Smile")
     CONFUSED =   "C", _("Confused")
     GREAT =      "G", _("Great")
